@@ -67,27 +67,21 @@
 	    - The code may become more complicated since you need to introduce a lot of new subclasses to implement the patter. The best case scenario is when you’re introducing the pattern into an existing hierarchy of creator classes
 -   ## Prototype
 	- to be added
--   ## Factory Method
+-   ## Singleton
     -   ### What is is used for:
-	    -   Defines an interface for creating objects, but let subclasses decide which class to instantiate
-	    - Refers to the newly created object through a common interface
-    -   ### Participants
-	    - Product
-		    - Defines the interface for objects the factory method creates
-		- ConcreteProduct  
-			- Implements the Product interface
-	    -  Creator
-		    - Also referred as Factory because it creates the Product objects
-		    - Declares the method FactoryMethod, which returns a Product object.
-		    - May call the generating method for creating Product objects
-		- ConcreteCreator
-			- Overrides the generating method for creating ConcreteProduct objects  
+	    -   Ensure that only one instance of a class is created
+	    - Provide a global point of access to the object
+	-   ### Participants
+	    - Singleton class
+		    - Involves one constructor and a static public method that returns a reference to the static member
     -   ### Pros
-		-   You avoid tight coupling between the creator and the concrete products		
-		- Single Responsibility Principle - you can move the product creation code into one place in the program, making the code easier to support
-		- Open/Closed Principle - You can introduce new types of products into the program without breaking existing client code
-    -   ### Cons    
-	    - The code may become more complicated since you need to introduce a lot of new subclasses to implement the patter. The best case scenario is when you’re introducing the pattern into an existing hierarchy of creator classes
+		-   You can be sure that a class has only a single instance		
+		- Singleton object is initialized only when it’s requested for the first time
+	   -   ### Cons    
+	    - Violates the single responsibility principle - the pattern solves two problems at the time
+	    - Can mask bad design, for instance, when the components of the program know too much about each other
+	    - Requires special treatment in a multithreaded environment so that multiple threads won’t create a singleton object several times
+	    - May be difficult to unit test the client code of the singleton because many test frameworks rely on inheritance when producing mock objects. Since the constructor of the singleton class is private and overriding static methods are impossible in most languages, you will need to think of a creative way to mock the singleton. Or just don’t write tests… or don’t use singleton pattern
 
 
 
