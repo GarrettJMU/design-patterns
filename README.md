@@ -257,9 +257,104 @@
 	- to be added
 -   ## Mediator
 	- to be added
-
-
-
-
+-   ## Memento
+    -   ### What is is used for:
+	    - Capture the internal state of an object without violating encapsulation and thus providing a mean for restoring the object into initial state when needed
+	-   ### Participants
+	    - Caretaker
+		    - Responsible for keeping memento
+		    - Caretaker knows nothing of memento
+		    - Caretaker must not operate on it		    - 
+		 - Memento
+			- Stores internal state of Originator. The state can include any number of state variables
+			- Memento must have two interfaces, an interface to the caretaker. This interface must not allow any operations or any access to internal state stored by the memento and thus honors encapsulation.
+			- The other interface is to the originator and allows the originator to access any state variables necessary for the originator to restore previous state
+		 - Originator
+		    - Creates a memento object capturing the originators internal state
+		    - Use the memento object to restore its previous state
+    -   ### Pros
+		- You can produce snapshots of the object's state without violating the encapsulation
+		- You can simplify the originators code by letting the caretaker maintain the history of the originators state
+	-   ### Cons
+	    - If clients create mementos often it’ll kill RAM usage
+	    - Caretakers should track the originator’s lifecycle to be able to destroy obsolete mementos
+	    - Most dynamic programming languages can’t guarantee that the state within the memento stays untouched
+-   ## Observer
+    -   ### What is is used for:
+	    - Defines a one to many dependency between objects so that when one object changes state, all of its dependents are notified and updated automatically
+	    - Change of state must be reflected in another object without tight coupling
+	    - Framework we are writing needs to be enhanced in future with new observers with minimal changes
+	    - MVC pattern is used to decouple the model from the view.
+		    - In this scenario the View is the observer and the model is the observable
+	-   ### Participants
+	    - Observable
+		    - Interface or abstract class defining the operations for attaching and detaching observers to the client. In the FOG book this class/interface is known as Subject
+		 - ConcreteObservable
+			- Concrete Observable class. It maintains the state of the object and when a change in the state occurs it notifies the attached Observers
+		 - Observer
+		    - Interface or abstract class defining the operations to be used to notify this object
+		 - ConcreteObserverA, ConcreteObserver2
+		    - ConcreteObserver implementations
+    -   ### Pros
+		- Supports notion of loosely coupled item
+		- Efficient way of sending data to multiple “observers”
+		- You can add and remove as needed
+	-   ### Cons
+	    - Can create unnecessary complexity
+	    - Order of dependable notifications is not always in order
+-   ## State
+    -   ### What is is used for:
+	    - Behavioral pattern that allows an object to alter its behavior when its internal state changes. It appears as if the object changed it’s class
+	-   ### Participants
+	    - Context
+		    - Defines the interface of interest to clients and maintains an instance of a ConcreteState subclass that defines the current state
+		 - State
+			- Defines an interface for encapsulating the behavior associated with a particular state of the Context
+		 - ConcreteState
+		    - Each subclass implements a behavior associated with a state of the Context
+    -   ### Pros
+		- Single Responsibility Principle - organizes the code related to particular states into separate classes
+		- Open/Closed Principle - Introduces new states without changing existing state classes or the context
+		- Simplify the code of the context by eliminating bulky state machine conditionals
+	-   ### Cons
+	    - Applying this pattern can be overkill if a state machine has only a few states or rarely changes
+-   ## Strategy
+    -   ### What is is used for:
+	    - Define a family of algorithms, encapsulate each one, and make them interchangeable. Strategy lets the algorithm vary independently from clients that use it
+	    - Context class takes in a ConcreteStrategy class
+	-   ### Participants
+	    - Strategy
+		    - Defines an interface common to all supported algorithms. Context uses this interface to call the algorithm defined by a ConcreteStrategy
+		 - ConcreteStrategy
+			- Each concrete strategy implements an algorithm
+		 - Context
+		    - Contains a reference to a strategy object
+    -   ### Pros
+		- You can swap algorithms used inside an object at runtime
+		- You can isolate the implementation details of an algorithm from the code that uses it
+		- You can replace inheritance with composition
+		- Open/Closed Principle - You can introduce new strategies without having to change the context
+	-   ### Cons
+	    - If you only have a couple of algorithms and they rarely change, there's no real reason to overcomplicate the program with new classes and interfaces that come along with the pattern
+	    - Clients must be aware of the differences between strategies to be able to select a proper one
+	    - A lot of modern programming languages have functional type support that lets you implement different versions of an algorithm inside a set of anonymous functions. Then you could use these functions exactly as you'd have used the strategy objects, but without bloating your code with extra classes and interfaces
+-   ## Template Method
+    -   ### What is is used for:
+	    - Define the skeleton of an algorithm in an operation, deferring some steps to subclasses
+	    - Template lets subclasses redefine certain steps of an algorithm without letting them change the algorithms structure
+	-   ### Participants
+	    - AbstractClass
+		    - Defines abstract primitive operations that concrete subclasses define to implement steps of an algorithm.
+		    - Implements a template method which defines the skeleton of an algorithm. The template method calls primitive operations as well as operations defined in AbstractClass or those of other objects
+		 - ConcreteClass
+			- Implements the primitive operations to carry out subclass-specific steps of the algorithm
+			- When a concrete class is called the template method code will be executed from the base class while for each method used inside the template method will be called the implementation from the derived class
+    -   ### Pros
+		- You can let clients override only certain parts of a large algorithm, making them less affected by changes that happen to other parts of the algorithm
+		- You can pull the duplicate code into a superclass
+	-   ### Cons
+	    - Some clients may be limited by the provided skeleton of an algorithm
+	    - You might violate the Liskov Substitution Principle by suppressing a default step implementation via a subclass
+	    - Template methods tend to be harder to maintain the more steps they have
 -   ## Visitor
 	- to be added
