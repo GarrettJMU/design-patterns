@@ -77,7 +77,7 @@
     -   ### Pros
 		-   You can be sure that a class has only a single instance		
 		- Singleton object is initialized only when it’s requested for the first time
-	   -   ### Cons    
+    -   ### Cons
 	    - Violates the single responsibility principle - the pattern solves two problems at the time
 	    - Can mask bad design, for instance, when the components of the program know too much about each other
 	    - Requires special treatment in a multithreaded environment so that multiple threads won’t create a singleton object several times
