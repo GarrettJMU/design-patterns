@@ -3,7 +3,7 @@
 
 ## [Creational Patterns](/patterns/creational)
 
--   ## [Abstract Factory](/patterns/creational/abstract)
+-   ## [Abstract Factory](/patterns/creational/abstract-factory)
     -   ### What is is used for:
 	    -   Offers the interface for creating a family of related objects, without explicitly specifying their classes
     -   ### Participants
@@ -85,7 +85,7 @@
 	    - May be difficult to unit test the client code of the singleton because many test frameworks rely on inheritance when producing mock objects. Since the constructor of the singleton class is private and overriding static methods are impossible in most languages, you will need to think of a creative way to mock the singleton. Or just don’t write tests… or don’t use singleton pattern
 ## [Structural Patterns](/patterns/structural)
 
--   ## Adapter
+-   ## [Adapter](/patterns/structural/adapter)
     -   ### What is is used for:
 	    -   Convert the interface of a class into another interface clients expect
 	    - Adapter lets classes work together, that could not otherwise because of incompatible interfaces
@@ -104,7 +104,7 @@
 	-   ### Cons
 	    - Overall complexity of the code increases because you need to introduce a set of new interfaces and classes.
 	    - Sometimes it’s simpler just to change the service class so that it matches the rest of your code
--   ## Bridge
+-   ## [Bridge](/patterns/structural/bridge)
     -   ### What is is used for:
 	    -   Intent of this pattern is to decouple abstraction from implementation so that the two can vary independently
 	-   ### Participants
@@ -125,7 +125,7 @@
 		- Single Responsibility Principle - You can focus on high-level logic in the abstraction and on platform details in the implementation
 	-   ### Cons
 	    - Might make the code more complicated by applying the pattern to a highly cohesive class
--   ## Composite
+-   ## [Composite](/patterns/structural/composite)
     -   ### What is is used for:
 	    -   Intent of this pattern is to compose objects into tree structures to represent part-whole hierarchies
 	    - Composite lets clients treat individual objects and compositions of objects uniformly
@@ -143,7 +143,7 @@
 		- Open/Closed Principle - You can introduce new element types into the app without breaking the existing code, which now works with the object tree
 	-   ### Cons
 	    - It might be difficult to provide a common interface for classes whose functionality differs too much. In certain scenarios, you’d need to overgeneralize the component interface, making it harder to comprehend
--   ## Decorator
+-   ## [Decorator](/patterns/structural/decorator)
     -   ### What is is used for:
 	    -  Add additional responsibilities dynamically to an object
 	-   ### Participants
@@ -168,7 +168,7 @@
 	- to be added
 -   ## Flyweight
 	- to be added
--   ## Proxy
+-   ## [Proxy](/patterns/structural/proxy)
     -   ### What is is used for:
 	    -  Intent is to provide a placeholder for an object to control references to it
 	-   ### Participants
@@ -190,9 +190,8 @@
 	    - Code may become more complicated since you need to introduce a lot of new classes
 	    - Hard to implement a decorator in such a way that its behavior doesn’t depend on the order in the decorators stack
 	    - Response from the service might get delayed
-## 
 ## [Behavioral Patterns](/patterns/behavioral)
--   ## Chain of Responsibility
+-   ## [Chain Of Responsibility](/patterns/behavioral/chain-of-responsibility)
     -   ### What is is used for:
 	    -  Avoids attaching the sender of a request to its receiver, giving this way other objects the possibility of handling the request too
 	    - Objects become parts of a chain and the request is sent from one object to another across the chain until one of the objects will handle it
@@ -211,7 +210,7 @@
 		- Open/Closed Principle - you can introduce new handlers into the app without breaking the existing client code
 	-   ### Cons
 	    - Some requests may end up unhandled
--   ## Command
+-   ## [Command](/patterns/behavioral/command)
     -   ### What is is used for:
 	    -  Encapsulate request in single object
 	    - Allow parameterization of requests from clients
@@ -235,7 +234,7 @@
 	-   ### Cons
 	    - Increase in number of classes for each command
 
--   ## Interpreter
+-   ## [Interpreter](/patterns/behavioral/interpreter)
     -   ### What is is used for:
 	    - A way for unrecognized information to be put into a coherent manner
 	    - Grammar and light math interpretation
@@ -259,7 +258,7 @@
 	- to be added
 -   ## Mediator
 	- to be added
--   ## Memento
+-   ## [Memento](/patterns/behavioral/memento)
     -   ### What is is used for:
 	    - Capture the internal state of an object without violating encapsulation and thus providing a mean for restoring the object into initial state when needed
 	-   ### Participants
@@ -281,7 +280,7 @@
 	    - If clients create mementos often it’ll kill RAM usage
 	    - Caretakers should track the originator’s lifecycle to be able to destroy obsolete mementos
 	    - Most dynamic programming languages can’t guarantee that the state within the memento stays untouched
--   ## Observer
+-   ## [Observer](/patterns/behavioral/observer)
     -   ### What is is used for:
 	    - Defines a one to many dependency between objects so that when one object changes state, all of its dependents are notified and updated automatically
 	    - Change of state must be reflected in another object without tight coupling
@@ -304,7 +303,7 @@
 	-   ### Cons
 	    - Can create unnecessary complexity
 	    - Order of dependable notifications is not always in order
--   ## State
+-   ## [State](/patterns/behavioral/state)
     -   ### What is is used for:
 	    - Behavioral pattern that allows an object to alter its behavior when its internal state changes. It appears as if the object changed it’s class
 	-   ### Participants
@@ -320,7 +319,7 @@
 		- Simplify the code of the context by eliminating bulky state machine conditionals
 	-   ### Cons
 	    - Applying this pattern can be overkill if a state machine has only a few states or rarely changes
--   ## Strategy
+-   ## [Strategy](/patterns/behavioral/strategy)
     -   ### What is is used for:
 	    - Define a family of algorithms, encapsulate each one, and make them interchangeable. Strategy lets the algorithm vary independently from clients that use it
 	    - Context class takes in a ConcreteStrategy class
@@ -340,7 +339,7 @@
 	    - If you only have a couple of algorithms and they rarely change, there's no real reason to overcomplicate the program with new classes and interfaces that come along with the pattern
 	    - Clients must be aware of the differences between strategies to be able to select a proper one
 	    - A lot of modern programming languages have functional type support that lets you implement different versions of an algorithm inside a set of anonymous functions. Then you could use these functions exactly as you'd have used the strategy objects, but without bloating your code with extra classes and interfaces
--   ## Template Method
+-   ## [Template Method](/patterns/behavioral/template-method)
     -   ### What is is used for:
 	    - Define the skeleton of an algorithm in an operation, deferring some steps to subclasses
 	    - Template lets subclasses redefine certain steps of an algorithm without letting them change the algorithms structure
