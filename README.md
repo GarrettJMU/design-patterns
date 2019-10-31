@@ -83,7 +83,7 @@
 	    - Can mask bad design, for instance, when the components of the program know too much about each other
 	    - Requires special treatment in a multithreaded environment so that multiple threads won’t create a singleton object several times
 	    - May be difficult to unit test the client code of the singleton because many test frameworks rely on inheritance when producing mock objects. Since the constructor of the singleton class is private and overriding static methods are impossible in most languages, you will need to think of a creative way to mock the singleton. Or just don’t write tests… or don’t use singleton pattern
-## Structural Patterns
+## [Structural Patterns](/patterns/structural)
 
 -   ## Adapter
     -   ### What is is used for:
@@ -190,7 +190,8 @@
 	    - Code may become more complicated since you need to introduce a lot of new classes
 	    - Hard to implement a decorator in such a way that its behavior doesn’t depend on the order in the decorators stack
 	    - Response from the service might get delayed
-## Behavioral Patterns
+## 
+## [Behavioral Patterns](/patterns/behavioral)
 -   ## Chain of Responsibility
     -   ### What is is used for:
 	    -  Avoids attaching the sender of a request to its receiver, giving this way other objects the possibility of handling the request too
