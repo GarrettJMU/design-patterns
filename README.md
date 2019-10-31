@@ -3,7 +3,7 @@
 
 ## [Creational Patterns](/patterns/creational)
 
--   ## Abstract Factory
+-   ## [Abstract Factory](/patterns/creational/abstract)
     -   ### What is is used for:
 	    -   Offers the interface for creating a family of related objects, without explicitly specifying their classes
     -   ### Participants
@@ -25,7 +25,7 @@
     -   ### Cons    
 	    - The code may become more complicated than it should be, since a lot of new interfaces and classes are introduced along with the pattern
 
--   ## Builder Factory
+-   ## [Builder](/patterns/creational/builder)
     -   ### What is is used for:
 	    -   Defines an instance for creating an object but letting subclasses decide which class to instantiate
     -   ### Participants
@@ -45,7 +45,7 @@
 	    - Overall complexity of the code increases since the pattern requires creating multiple new classes
 
 
--   ## Factory Method
+-   ## [Factory Method](/patterns/creational/factory-method)
     -   ### What is is used for:
 	    -   Defines an interface for creating objects, but let subclasses decide which class to instantiate
 	    - Refers to the newly created object through a common interface
@@ -68,7 +68,7 @@
 	    - The code may become more complicated since you need to introduce a lot of new subclasses to implement the patter. The best case scenario is when you’re introducing the pattern into an existing hierarchy of creator classes
 -   ## Prototype
 	- to be added
--   ## Singleton
+-   ## [Singleton](/patterns/creational/singleton)
     -   ### What is is used for:
 	    -   Ensure that only one instance of a class is created
 	    - Provide a global point of access to the object
