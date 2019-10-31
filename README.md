@@ -1,7 +1,7 @@
 
 # Design Patterns
 
-## [Creational Patterns](/creational)
+## [Creational Patterns](/patterns/creational)
 
 -   ## Abstract Factory
     -   ### What is is used for:
