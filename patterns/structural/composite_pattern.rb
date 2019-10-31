@@ -57,12 +57,12 @@ class Composite < Component
   # complex) to or from its child list.
 
   def add(component)
-    @children.append(component)
+    @children.push(component)
     component.parent = self
   end
 
   def remove(component)
-    @children.remove(component)
+    @children.delete(component)
     component.parent = nil
   end
 
@@ -76,7 +76,7 @@ class Composite < Component
   # forth, the whole object tree is traversed as a result.
   def operation
     results = []
-    @children.each { |child| results.append(child.operation) }
+    @children.each { |child| results.push(child.operation) }
     "Branch(#{results.join('+')})"
   end
 end
