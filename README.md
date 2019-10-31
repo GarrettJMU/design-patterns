@@ -142,15 +142,124 @@
 		- Open/Closed Principle - You can introduce new element types into the app without breaking the existing code, which now works with the object tree
 	-   ### Cons
 	    - It might be difficult to provide a common interface for classes whose functionality differs too much. In certain scenarios, you’d need to overgeneralize the component interface, making it harder to comprehend
-
-
-
-
-
-
-
-
-
-
-
+-   ## Decorator
+    -   ### What is is used for:
+	    -  Add additional responsibilities dynamically to an object
+	-   ### Participants
+	    - Component
+		    - Interface for objects that can have responsibilities added to them dynamically
+		 - ConcreteComponent
+			- Defines an object to which additional responsibilities can be added
+		 - Decorator
+		    - Maintains a reference to a Component object and defines an interface that conforms to Component’s interface
+		 - Concrete Decorators
+		    - Concrete Decorators extend the functionality of the component by adding state or adding behavior
+    -   ### Pros
+		-  You can extend an objects behavior without making a new subclass
+		- You can add or remove responsibilities from an object at runtime
+		- You can combine several behaviors by wrapping an object into multiple decorators
+		- Single Responsibility Principle - you can divide a monolithic class that implements many possible variants of behavior into several smaller classes
+	-   ### Cons
+	    - Hard to remove a specific wrapper from the wrappers stack
+	    - Hard to implement a decorator in such a way that its behavior doesn’t depend on the order in the decorators stack
+	    - Initial configuration code of layers might look ugly
+-   ## Facade
+	- to be added
+-   ## Flyweight
+	- to be added
+-   ## Proxy
+    -   ### What is is used for:
+	    -  Intent is to provide a placeholder for an object to control references to it
+	-   ### Participants
+	    - Subject
+		    - Interface implemented by the RealSubject and representing its services. The interface must be implemented by the proxy as well so that the proxy can be used in any location where the RealSubject can be used
+		 - Proxy
+			- Maintains a reference that allows the Proxy to access the RealSubject
+			- Implements the same interface implemented by the RealSubject so that the Proxy can be substituted for the RealSubject
+			- Controls access to the RealSubject and may be responsible for its creation and deletion
+			- Other responsibilities depend on the kind of proxy
+		 - RealSubject
+		    - Real object that the proxy represents
+    -   ### Pros
+		- You can control the service object without clients knowing about it
+		- You can manage the lifecycle of the service object when clients don’t care about it
+		- Proxy works even if the service object isn’t ready or is not available 
+		- Open/Closed Principle - you can introduce new proxies without changing the service or clients
+	-   ### Cons
+	    - Code may become more complicated since you need to introduce a lot of new classes
+	    - Hard to implement a decorator in such a way that its behavior doesn’t depend on the order in the decorators stack
+	    - Response from the service might get delayed
 ## Behavioral Patterns
+-   ## Chain of Responsibility
+    -   ### What is is used for:
+	    -  Avoids attaching the sender of a request to its receiver, giving this way other objects the possibility of handling the request too
+	    - Objects become parts of a chain and the request is sent from one object to another across the chain until one of the objects will handle it
+	-   ### Participants
+	    - Handler
+		    - Defines an interface for handling requests
+		 - RequestHandler
+			- Handles the requests it is responsible for
+			- If it can handle the request it does so, otherwise it sends the request to its successor
+		 - Client
+		    - Sends commands to the first object in the chain that may handle the command
+    -   ### Pros
+		- You can control the order of request handling
+		- Single Responsibility Principle - you can decouple classes that invoke operations from classes that perform operations
+		- Proxy works even if the service object isn’t ready or is not available 
+		- Open/Closed Principle - you can introduce new handlers into the app without breaking the existing client code
+	-   ### Cons
+	    - Some requests may end up unhandled
+-   ## Command
+    -   ### What is is used for:
+	    -  Encapsulate request in single object
+	    - Allow parameterization of requests from clients
+	    - Allow saving into a queue
+	-   ### Participants
+	    - Command
+		    - Declares interface for executing an operation
+		 - ConcreteCommand
+			- Extends the Command interface, implementing the execute method by invoking the corresponding operations on Receiver. It defines a link between the Receiver and the action
+		 - Client
+		    - Creates a ConcreteCommand object and sets its receiver
+		 - Invoker
+		    - Asks the command to carry out the request
+		 - Receiver
+		    - Knows how to perform the operations
+    -   ### Pros
+		- Decouples objects
+		- Add new command without changing existing code
+		- Can create a sequence of commands (macro). Create a list of Command instances and call the execute method of all commands
+		- Undo/Redo easily
+	-   ### Cons
+	    - Increase in number of classes for each command
+
+-   ## Interpreter
+    -   ### What is is used for:
+	    - A way for unrecognized information to be put into a coherent manner
+	    - Grammar and light math interpretation
+	-   ### Participants
+	    - AbstractExpression
+		    - Declares an interpret() operation that all nodes (terminal and nonterminal) in the AST overrides
+		 - TerminalExpression
+			- Implements the interpret() operation for terminal expressions		 - Client
+		 - NonterminalExpression
+		    - Implements the interpret operation for all nonterminal expressions
+		 - Context
+		    - Contains information that is global to the interpreter. It is this string expression with the postfix notation that has to be interpreted and parsed
+		 - Client
+		    - Builds (or is provided) the AST assembled from TerminalExpression and NonterminalExpression. The Client invokes the interpret() operation
+    -   ### Pros
+		- Easy to add and move things in interpretation
+		- Implementing grammar is too easy
+	-   ### Cons
+	    - Complex grammar is hard to handle
+-   ## Iterator
+	- to be added
+-   ## Mediator
+	- to be added
+
+
+
+
+-   ## Visitor
+	- to be added
