@@ -288,10 +288,43 @@
 		- Implementing grammar is too easy
 	-   ### Cons
 	    - Complex grammar is hard to handle
--   ## Iterator
-	- to be added
--   ## Mediator
-	- to be added
+-   ## [Iterator](/patterns/behavioral/iterator)
+    -   ### What is is used for:
+	    - Provide a way to access the elements of an aggregate object sequentially without exposing its underlying representation.
+	    - The C++ and Java standard library abstraction that makes it possible to decouple collection classes and algorithms.
+	    - Promote to "full object status" the traversal of a collection.
+	    - Polymorphic traversal
+	-   ### Participants
+	    - to be added
+    -   ### Pros
+		- _Single Responsibility Principle_. You can clean up the client code and the collections by extracting bulky traversal algorithms into separate classes.
+		- _Open/Closed Principle_. You can implement new types of collections and iterators and pass them to existing code without breaking anything.
+		- You can iterate over the same collection in parallel because each iterator object contains its own iteration state.
+		- For the same reason, you can delay an iteration and continue it when needed.
+	-   ### Cons
+	    - Applying the pattern can be an overkill if your app only works with simple collections.
+	    - Using an iterator may be less efficient than going through elements of some specialized collections directly.
+-   ## [Mediator](/patterns/behavioral/mediator)
+    -   ### What is is used for:
+	    - Define an object that encapsulates how a set of objects interact. Mediator promotes loose coupling by keeping objects from referring to each other explicitly, and it lets you vary their interaction independently.
+	    - Design an intermediary to decouple many peers.
+	    - Promote the many-to-many relationships between interacting peers to "full object status".
+	-   ### Participants
+	    - Mediator
+		    - It defines the interface for communication between colleague objects.
+		 - ConcreteMediator
+			- It implements the mediator interface and coordinates communication between colleague objects.
+		 - Colleague
+		    - It defines the interface for communication with other colleagues
+	    - ConcreteColleague
+		    - It implements the colleague interface and communicates with other colleagues through its mediator
+    -   ### Pros
+		- _Single Responsibility Principle_. You can extract the communications between various components into a single place, making it easier to comprehend and maintain.
+		- _Open/Closed Principle_. You can introduce new mediators without having to change the actual components.
+		- You can reduce coupling between various components of a program.
+		- You can reuse individual components more easily.
+	-   ### Cons
+	    - Over time a mediator can evolve into a [God Object](https://refactoring.guru/antipatterns/god-object).
 -   ## [Memento](/patterns/behavioral/memento)
     -   ### What is is used for:
 	    - Capture the internal state of an object without violating encapsulation and thus providing a mean for restoring the object into initial state when needed
