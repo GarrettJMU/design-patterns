@@ -66,7 +66,7 @@
 		- Open/Closed Principle - You can introduce new types of products into the program without breaking existing client code
     -   ### Cons    
 	    - The code may become more complicated since you need to introduce a lot of new subclasses to implement the patter. The best case scenario is when you’re introducing the pattern into an existing hierarchy of creator classes
--   ## Prototype
+-   ## [Prototype](/patterns/creational/prototype)
     -   ### What is is used for:
 	    -   Specify the kinds of objects to create using a prototypical instance, and create new objects by copying this prototype.
 	    - Co-opt one instance of a class for use as a breeder of all future instances.
