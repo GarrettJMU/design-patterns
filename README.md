@@ -374,5 +374,27 @@
 	    - Some clients may be limited by the provided skeleton of an algorithm
 	    - You might violate the Liskov Substitution Principle by suppressing a default step implementation via a subclass
 	    - Template methods tend to be harder to maintain the more steps they have
--   ## Visitor
-	- to be added
+-   ## [Visitor](/patterns/behavioral/visitor)
+    -   ### What is is used for:
+	    - Represent an operation to be performed on the elements of an object structure. Visitor lets you define a new operation without changing the classes of the elements on which it operates.
+	    - The classic technique for recovering lost type information.
+	    - Do the right thing based on the type of two objects.
+	    - Double dispatch
+	-   ### Participants
+	    - Client
+		    - The Client class is a consumer of the classes of the visitor design pattern. It has access to the data structure objects and can instruct them to accept a Visitor to perform the appropriate processing.
+		 - Visitor
+			- This is an interface or an abstract class used to declare the visit operations for all the types of visitable classes.
+		- ConcreteVisitor
+			- For each type of visitor all the visit methods, declared in abstract visitor, must be implemented. Each Visitor will be responsible for different operations.
+		- Visitable
+			- This is an interface which declares the accept operation. This is the entry point which enables an object to be “visited” by the visitor object.
+		- ConcreteVisitable
+			- These classes implement the Visitable interface or class and defines the accept operation. The visitor object is passed to this object using the accept operation.
+    -   ### Pros
+		- _Open/Closed Principle_. You can introduce a new behavior that can work with objects of different classes without changing these classes.
+		- _Single Responsibility Principle_. You can move multiple versions of the same behavior into the same class.
+		- A visitor object can accumulate some useful information while working with various objects. This might be handy when you want to traverse some complex object structure, such as an object tree, and apply the visitor to each object of this structure.
+	-   ### Cons
+	    - You need to update all visitors each time a class gets added to or removed from the element hierarchy.
+	    - Visitors might lack the necessary access to the private fields and methods of the elements that they’re supposed to work with.
