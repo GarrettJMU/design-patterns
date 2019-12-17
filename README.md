@@ -181,10 +181,27 @@
 	    - Hard to remove a specific wrapper from the wrappers stack
 	    - Hard to implement a decorator in such a way that its behavior doesn’t depend on the order in the decorators stack
 	    - Initial configuration code of layers might look ugly
--   ## Facade
-	- to be added
--   ## Flyweight
-	- to be added
+-   ## [Facade](/patterns/structural/facade)
+    -   ### What is is used for:
+	    -  Provide a unified interface to a set of interfaces in a subsystem. Facade defines a higher-level interface that makes the subsystem easier to use.
+	    - Wrap a complicated subsystem with a simpler interface.
+	-   ### Participants
+	    - to be added
+    -   ### Pros
+		- You can isolate your code from the complexity of a subsystem.
+	-   ### Cons
+	    - A facade can become [a god object](https://refactoring.guru/antipatterns/god-object) coupled to all classes of an app.	    
+-   ## [Flyweight](/patterns/structural/flyweight)
+    -   ### What is is used for:
+	    -  Use sharing to support large numbers of fine-grained objects efficiently.
+	    - The Motif GUI strategy of replacing heavy-weight widgets with light-weight gadgets.
+	-   ### Participants
+	    - Really depends on setup
+    -   ### Pros
+		- You can save lots of RAM, assuming your program has tons of similar objects.
+	-   ### Cons
+	    - You might be trading RAM over CPU cycles when some of the context data needs to be recalculated each time somebody calls a flyweight method.	    - Hard to implement a decorator in such a way that its behavior doesn’t depend on the order in the decorators stack
+	    - The code becomes much more complicated. New team members will always be wondering why the state of an entity was separated in such a way.
 -   ## [Proxy](/patterns/structural/proxy)
     -   ### What is is used for:
 	    -  Intent is to provide a placeholder for an object to control references to it
